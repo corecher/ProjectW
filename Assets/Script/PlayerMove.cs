@@ -14,6 +14,7 @@ public class PlayerMove : MonoBehaviour
     {
         move();
         jump();
+        Reset();
     }
     void move()
     {
@@ -28,6 +29,13 @@ public class PlayerMove : MonoBehaviour
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f);
             rb.AddForce(Vector3.up * jumppower);
             jumpcount=false;
+        }
+    }
+    void Reset()
+    {
+        if(transform.position.y<-20)
+        {
+            transform.position=new Vector2(0,0);
         }
     }
     void OnCollisionEnter2D(Collision2D collision)
